@@ -38,9 +38,9 @@ final class DynamicJsonData implements ConverterInterface
 
         $flattenedArray = $this->flattenArray($decoded);
         foreach ($this->converters as $path => $converter) {
-            $replaced = str_replace(['\<\>', '\\.'], ['(.+)', '.'], preg_quote($path, '/'));
+            $regexPath = \preg_replace('/\<\>/', '(.+)', $path);
             foreach ($flattenedArray as $key => $nestedValue) {
-                if (preg_match('/^' . $replaced . '$/', $key, $matches)) {
+                if (preg_match('/^' . $regexPath . '$/', $key, $matches)) {
                     // Format the value
                     $convertedValue = $converter->convert($nestedValue, $context);
 

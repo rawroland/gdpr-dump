@@ -2,10 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## WIP
+
+- Fixed an error that occurred when parsing table name patterns ([#190](https://github.com/Smile-SA/gdpr-dump/pull/190))
+
 ## [5.0.5] - 2025-04-05
 [5.0.5]: https://github.com/Smile-SA/gdpr-dump/compare/5.0.4...5.0.5
 
-- Fix database url param not being compatible with env vars ([#157](https://github.com/Smile-SA/gdpr-dump/pull/157))
+- Fixed database url param not being compatible with env vars ([#157](https://github.com/Smile-SA/gdpr-dump/pull/157))
 
 ## [5.0.4] - 2025-04-03
 [5.0.4]: https://github.com/Smile-SA/gdpr-dump/compare/5.0.3...5.0.4

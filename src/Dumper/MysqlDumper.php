@@ -89,7 +89,7 @@ final class MysqlDumper implements DumperInterface
 
         if (array_key_exists('compress', $settings)) {
             // e.g. "gzip" -> "Gzip"
-            $settings['compress'] = strtoupper($settings['compress']);
+            $settings['compress'] = ucfirst($settings['compress']);
         }
 
         // Tables to include/exclude/truncate

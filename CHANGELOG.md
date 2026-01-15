@@ -2,8 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
-## WIP
+## [5.0.6] - 2026-01-15
+[5.0.6]: https://github.com/Smile-SA/gdpr-dump/compare/5.0.5...5.0.6
 
+- Compatibility with PHP 8.5
 - Fixed an error that occurred when parsing table name patterns ([#190](https://github.com/Smile-SA/gdpr-dump/pull/190))
 
 ## [5.0.5] - 2025-04-05

@@ -2,7 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
-## WIP
+## [5.0.7] - 2026-02-23
+[5.0.7]: https://github.com/Smile-SA/gdpr-dump/compare/5.0.6...5.0.7
 
 Bugfixes:
 

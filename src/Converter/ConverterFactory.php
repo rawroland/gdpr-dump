@@ -20,6 +20,8 @@ final class ConverterFactory
 
     /**
      * Create a converter from a name (e.g. "randomizeText").
+     *
+     * @param array<string, mixed> $parameters
      */
     public function create(string $name, array $parameters = []): ConverterInterface
     {

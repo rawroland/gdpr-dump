@@ -33,6 +33,9 @@ final class ArrayHelperTest extends TestCase
         $data = [];
 
         ArrayHelper::setPath($data, 'customer.email', 'email@example.org');
+
+        $this->assertArrayHasKey('customer', $data);
+        $this->assertArrayHasKey('email', $data['customer']);
         $this->assertSame('email@example.org', $data['customer']['email']);
     }
 }

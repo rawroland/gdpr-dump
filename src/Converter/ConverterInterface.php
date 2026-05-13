@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Smile\GdprDump\Converter;
 
-use Smile\GdprDump\Converter\Parameters\ValidationException;
-
 interface ConverterInterface
 {
     /**
      * Transform the value.
+     *
+     * @param array<string, mixed> $context
      */
     public function convert(mixed $value, array $context = []): mixed;
 
     /**
      * Set the converter parameters.
      *
-     * @throws ValidationException
+     * @param array<string, mixed> $parameters
      */
     public function setParameters(array $parameters): void;
 }

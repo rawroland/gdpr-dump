@@ -2,10 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.0.7] - 2026-02-23
+[5.0.7]: https://github.com/Smile-SA/gdpr-dump/compare/5.0.6...5.0.7
+
+Bugfixes:
+
+- Fixed an error that occurred when the database url contains special characters ([#196](https://github.com/Smile-SA/gdpr-dump/pull/196))
+
+Internal:
+
+- Moved converters to a dedicated namespace ([#198](https://github.com/Smile-SA/gdpr-dump/pull/198))
+
+## [5.0.6] - 2026-01-15
+[5.0.6]: https://github.com/Smile-SA/gdpr-dump/compare/5.0.5...5.0.6
+
+- Compatibility with PHP 8.5
+- Fixed an error that occurred when parsing table name patterns ([#190](https://github.com/Smile-SA/gdpr-dump/pull/190))
+
 ## [5.0.5] - 2025-04-05
 [5.0.5]: https://github.com/Smile-SA/gdpr-dump/compare/5.0.4...5.0.5
 
-- Fix database url param not being compatible with env vars ([#157](https://github.com/Smile-SA/gdpr-dump/pull/157))
+- Fixed database url param not being compatible with env vars ([#157](https://github.com/Smile-SA/gdpr-dump/pull/157))
 
 ## [5.0.4] - 2025-04-03
 [5.0.4]: https://github.com/Smile-SA/gdpr-dump/compare/5.0.3...5.0.4

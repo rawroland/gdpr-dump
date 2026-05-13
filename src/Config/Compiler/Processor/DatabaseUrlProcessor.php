@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Smile\GdprDump\Config\Compiler\Processor;
 
+use Doctrine\DBAL\Exception\MalformedDsnException;
+use Doctrine\DBAL\Tools\DsnParser;
 use Smile\GdprDump\Config\Compiler\CompileException;
 use Smile\GdprDump\Config\ConfigInterface;
 use Smile\GdprDump\Database\DatabaseInterface;
@@ -25,6 +27,8 @@ class DatabaseUrlProcessor implements ProcessorInterface
     /**
      * Parse the database url (if specified).
      *
+     * @param mixed[] $database
+     * @return mixed[]
      * @throws CompileException
      */
     private function processDatabaseNode(array $database): array
@@ -38,23 +42,24 @@ class DatabaseUrlProcessor implements ProcessorInterface
 
         // Validate url
         if (!filter_var($url, FILTER_VALIDATE_URL)) {
-            throw new CompileException(sprintf('The value "%s" is not a valid URL.', $url));
+            throw new CompileException(sprintf('The value "%s" is not a valid database URL.', $url));
         }
 
         // Parse url
-        $parsedUrl = parse_url($url);
-        if ($parsedUrl === false) {
-            throw new CompileException(sprintf('Failed to parse the url "%s".', $url));
+        try {
+            $parsedUrl = (new DsnParser())->parse($url);
+        } catch (MalformedDsnException $e) {
+            throw new CompileException(sprintf('Failed to parse the database url "%s".', $url), $e);
         }
 
         // Update database params from parsed url
         $map = [
-            'scheme' => 'driver',
-            'path' => 'name',
+            'driver' => 'driver',
+            'dbname' => 'name',
             'host' => 'host',
             'port' => 'port',
             'user' => 'user',
-            'pass' => 'password',
+            'password' => 'password',
         ];
 
         foreach ($map as $urlPart => $dbParam) {
@@ -65,7 +70,6 @@ class DatabaseUrlProcessor implements ProcessorInterface
 
             $value = (string) $parsedUrl[$urlPart];
             $database[$dbParam] = match ($dbParam) {
-                'name' => ltrim($value, '/'),
                 'driver' => $this->getDriverByScheme($value),
                 default => $value
             };
